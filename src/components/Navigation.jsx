@@ -24,12 +24,12 @@ const Navigation = () => {
   };
 
   let title = configureTitle(location.pathname);
-
+  const tabs = ["orders", "requests", "draft"];
   const [value, setValue] = React.useState(0);
 
   return (
-    <div className="rounded-b-[20px] sticky z-40 top-0 w-full bg-white">
-      <div className="flex justify-between pl-[40px] pt-[26px] pb-[18px] pr-[18px]  ">
+    <div className="rounded-b-[20px] border-b-background-outline border-b-[1px] sticky z-40 top-0 w-full bg-white">
+      <div className="flex justify-between pl-[40px] pt-[26px] pb-[18px] pr-[26px]  ">
         <div className="flex gap-[10px] flex-col">
           <div className="text-[28px] text-background-primary leading-[36px]">
             {title || "Dashboard"}
@@ -40,10 +40,17 @@ const Navigation = () => {
             <Link to="/">
               <HomeIcon width={20} />
             </Link>
-            <Link to="/shop-for-me">
-              {location.pathname.split("/")[1]} -{" "}
-              {["orders", "requests", "draft"][value]}
+            <Link to={location.pathname.split("/")[1]}>
+              {location.pathname.split("/")[1].replace(/-/g, " ")}
+              {/* {title !== "Home" &&
+                " - " + tabs[value]} */}
             </Link>
+            <div
+              to={`/${location.pathname.split("/")[1]}/${tabs[value]}`}
+              className="cursor-pointer"
+            >
+              {tabs[value]}
+            </div>
           </Breadcrumbs>
         </div>
         <div className="flex gap-3 items-center">
@@ -62,17 +69,40 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-      <Divider />
+      <Divider className="-mt-[0.6px] text-[#79747E] " />
       <Tabs
         value={value}
-        onChange={(e, value) => setValue(value)}
-        textColor="secondary"
-        indicatorColor="secondary"
-        className=""
+        onChange={(e, value) => {
+          setValue(value);
+        }}
+        className="ml-10 -mt-1"
+        TabIndicatorProps={{
+          children: (
+            <div className="h-[10px] -translate-y-[2px] rounded-t-[5px] w-[60%] bg-text-secondary" />
+          ),
+          className: "bg-transparent flex justify-center",
+        }}
+        sx={{
+          "& .MuiTab-root": {
+            color: "#49454F",
+            textTransform: "capitalize",
+            "&.Mui-selected": {
+              color: "#6750A4",
+            },
+          },
+        }}
       >
-        <Tab label="Orders" />
+        {/* <Tab href="/orders" label="Orders"></Tab>
         <Tab label="Requests" />
-        <Tab label="Draft" />
+        <Tab label="Draft" /> */}
+        {tabs.map((tab, index) => (
+          <Tab
+            to={`${location.pathname.split("/")[1]}/${tab}`}
+            key={index}
+            label={tab}
+            LinkComponent={Link}
+          ></Tab>
+        ))}
       </Tabs>
     </div>
   );

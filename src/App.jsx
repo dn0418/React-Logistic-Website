@@ -13,7 +13,7 @@ const App = () => {
       <Router>
         <Layout>
           <Routes>
-            <Route path="/shop-for-me" element={<ShopForMe />} />
+            <Route path="/shop-for-me/*" element={<ShopForMe />} />
             <Route path="/*" element={<DashboardNotFound />} />
           </Routes>
         </Layout>

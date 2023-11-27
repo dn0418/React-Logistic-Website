@@ -1,5 +1,5 @@
 import React from "react";
-import { SwipeableDrawer } from "@mui/material";
+import { SwipeableDrawer, Divider } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { userState } from "../utils/atom";
 import { NameInitialsAvatar } from "react-name-initials-avatar";
@@ -106,10 +106,9 @@ const Sidebar = () => {
   const location = useLocation();
   
   return (
-    <div className="flex overflow-scroll gap-14 sticky bottom-0 left-0 top-0 bg-background-primary pt-8 h-screen w-[266px] flex-col justify-between">
-      <div className="flex flex-col gap-7">
+    <div className="flex overflow-scroll sticky bottom-0 left-0 top-0 bg-background-primary pt-9  h-screen w-[266px] flex-col justify-between">
         <NameDisplay />
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col mt-10 gap-1">
           {navs.map((nav, index) => (
             <Link
               to={nav.path}
@@ -118,7 +117,7 @@ const Sidebar = () => {
                 location.pathname.split("/")[1] === nav.path.slice(1)
                   ? "bg-[url('/wow.svg')]"
                   : ""
-              } items-center pl-[18px] gap-[15px]`}
+              } items-center pl-[15px] gap-[15px]`}
             >
               {nav.icon}
               <span className="text-text-primary tracking-[0.5px] leading-[24px] text-[16px]">
@@ -126,9 +125,9 @@ const Sidebar = () => {
               </span>
             </Link>
           ))}
-        </div>
       </div>
-      <div className="flex flex-col">
+      <div className="flex mt-[6rem] flex-col">
+        <Divider className="text-background-outline bg-background-outline mx-6" /> 
         {otherNavs.map((nav, index) => (
           <Link
             to={nav.path}
@@ -137,7 +136,7 @@ const Sidebar = () => {
               location.pathname.split("/")[1] === nav.path.slice(1)
                 ? "bg-[url('/wow.svg')]"
                 : ""
-            } items-center pl-[18px] gap-[15px]`}
+            } items-center pl-[15px] gap-[15px]`}
           >
             {nav.icon}
             <span className="text-text-primary tracking-[0.5px] leading-[24px] text-[16px]">
