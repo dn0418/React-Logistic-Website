@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 
 const Layout = ({ children }) => {
   return (
-    <div className=" bg-[#F4EFF4] flex">
+    <div className="bg-background-secondary flex">
       <Sidebar />
       <div className="flex-1">
         <Navigation />

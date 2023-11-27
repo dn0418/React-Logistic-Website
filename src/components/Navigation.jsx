@@ -31,6 +31,12 @@ const Navigation = () => {
     tabs.indexOf(locationArray[locationArray.length - 1])
   );
 
+  useEffect(() => {
+    if (locationArray[0] === "requests" && value !== 1) {
+      setValue(1);
+    }
+  }, [locationArray]);
+
   return (
     <div className="rounded-b-[20px] border-b-background-outline border-b-[1px] sticky z-40 top-0 w-full bg-white">
       <div className="flex justify-between pl-[40px] pt-[26px] pb-[18px] pr-[26px]  ">
