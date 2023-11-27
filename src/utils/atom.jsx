@@ -7,3 +7,8 @@ export const userState = atom({
     id: "RAC45678",
   },
 });
+
+export const notFoundState = atom({
+  key: "notFoundState",
+  default: false,
+});

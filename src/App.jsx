@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import ShopForMe from "./pages/ShopForMe";
+import ShopForMe from "./pages/ShopForMe/Index";
 import { Toaster } from "react-hot-toast";
 import { RecoilRoot } from "recoil";
-import DashboardNotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
         <Layout>
           <Routes>
             <Route path="/shop-for-me/*" element={<ShopForMe />} />
-            <Route path="/*" element={<DashboardNotFound />} />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </Layout>
       </Router>

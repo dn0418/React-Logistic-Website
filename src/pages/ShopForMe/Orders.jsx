@@ -1,9 +1,8 @@
-import React from "react";
-import ShopIcon from "../assets/icons/shop-2.svg?react";
+import React, { useEffect } from "react";
+import ShopIcon from "../../assets/icons/shop-2.svg?react";
 
-const ShopForMe = () => {
-    document.title = "Logistics - Shop For Me";
-
+const Orders = () => {
+ 
   return (
     <div className="h-screen flex items-center flex-col gap-3  justify-center">
       <div className="max-w-[30rem] text-center">
@@ -18,4 +17,4 @@ const ShopForMe = () => {
   );
 };
 
-export default ShopForMe;
+export default Orders;

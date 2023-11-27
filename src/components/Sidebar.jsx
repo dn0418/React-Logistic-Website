@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SwipeableDrawer, Divider } from "@mui/material";
 import { useRecoilValue } from "recoil";
 import { userState } from "../utils/atom";
@@ -100,34 +100,48 @@ const Sidebar = () => {
       title: "Settings",
       icon: <SettingsIcon />,
       path: "/settings",
-    }
-  ]
+    },
+  ];
 
   const location = useLocation();
-  
+
+  useEffect(() => {
+    let locationArray = location.pathname.split("/").slice(1);
+    let sideNavs = navs.concat(otherNavs);
+    let nav = sideNavs.find(
+      (nav) => nav.path === "/" + locationArray[0]
+    );
+    if (nav) {
+      document.title = `${nav?.title} - ${
+        locationArray[1].at(0).toUpperCase() +
+        locationArray[1].slice(1)
+      }`;
+    }
+  }, [location.pathname]);
+
   return (
     <div className="flex overflow-scroll sticky bottom-0 left-0 top-0 bg-background-primary pt-9  h-screen w-[266px] flex-col justify-between">
-        <NameDisplay />
-        <div className="flex flex-col mt-10 gap-1">
-          {navs.map((nav, index) => (
-            <Link
-              to={nav.path}
-              key={index}
-              className={`flex py-[13px] transition-all duration-1000 cursor-pointer hover:bg-[url('/wow.svg')] ${
-                location.pathname.split("/")[1] === nav.path.slice(1)
-                  ? "bg-[url('/wow.svg')]"
-                  : ""
-              } items-center pl-[15px] gap-[15px]`}
-            >
-              {nav.icon}
-              <span className="text-text-primary tracking-[0.5px] leading-[24px] text-[16px]">
-                {nav.title}
-              </span>
-            </Link>
-          ))}
+      <NameDisplay />
+      <div className="flex flex-col mt-10 gap-1">
+        {navs.map((nav, index) => (
+          <Link
+            to={nav.path + "/orders"}
+            key={index}
+            className={`flex py-[13px] transition-all duration-1000 cursor-pointer hover:bg-[url('/wow.svg')] ${
+              location.pathname.split("/")[1] === nav.path.slice(1)
+                ? "bg-[url('/wow.svg')]"
+                : ""
+            } items-center pl-[15px] gap-[15px]`}
+          >
+            {nav.icon}
+            <span className="text-text-primary tracking-[0.5px] leading-[24px] text-[16px]">
+              {nav.title}
+            </span>
+          </Link>
+        ))}
       </div>
       <div className="flex mt-[6rem] flex-col">
-        <Divider className="text-background-outline bg-background-outline mx-6" /> 
+        <Divider className="text-background-outline bg-background-outline mx-6" />
         {otherNavs.map((nav, index) => (
           <Link
             to={nav.path}
@@ -143,8 +157,7 @@ const Sidebar = () => {
               {nav.title}
             </span>
           </Link>
-        ))
-        }
+        ))}
       </div>
     </div>
   );

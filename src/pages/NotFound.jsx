@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const DashboardNotFound = () => {
-  
-  document.title = "404 - Page Not Found"
+const NotFound = () => {
+  useEffect(() => {
+    document.title = "404 - Page Not Found";
+  }, []);
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -14,4 +15,4 @@ const DashboardNotFound = () => {
   );
 };
 
-export default DashboardNotFound;
+export default NotFound;

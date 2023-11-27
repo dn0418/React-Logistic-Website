@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Divider, Tabs, Badge, Breadcrumbs, Tab } from "@mui/material";
 import NotificationIcon from "../assets/icons/notification.svg?react";
@@ -25,7 +25,11 @@ const Navigation = () => {
 
   let title = configureTitle(location.pathname);
   const tabs = ["orders", "requests", "draft"];
-  const [value, setValue] = React.useState(0);
+  let locationArray = location.pathname.split("/").slice(2);
+
+  const [value, setValue] = React.useState(
+    tabs.indexOf(locationArray[locationArray.length - 1])
+  );
 
   return (
     <div className="rounded-b-[20px] border-b-background-outline border-b-[1px] sticky z-40 top-0 w-full bg-white">
