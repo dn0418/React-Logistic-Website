@@ -1,6 +1,7 @@
 import React from "react";
 
 const DashboardNotFound = () => {
+  document.title = "404 - Page Not Found"
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="text-center">
