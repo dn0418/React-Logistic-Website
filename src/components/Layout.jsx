@@ -1,14 +1,17 @@
-import React from 'react'
-import Sidebar from './Sidebar'
-import Navigation from './Navigation'
+import React from "react";
+import Sidebar from "./Sidebar";
+import Navigation from "./Navigation";
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
-    <div>
+    <div className=" bg-[#F4EFF4] flex">
       <Sidebar />
-      <Navigation />
+      <div className="flex-1">
+        <Navigation />
+        <div>{children}</div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
