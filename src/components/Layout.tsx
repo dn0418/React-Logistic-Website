@@ -1,8 +1,7 @@
-import React from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar.tsx";
 import Navigation from "./Navigation";
 
-const Layout = ({ children }) => {
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="bg-background-secondary flex">
       <Sidebar />

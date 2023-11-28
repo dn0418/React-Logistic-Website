@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const NotFound = () => {
+const NotFound: React.FC = () => {
   useEffect(() => {
     document.title = "404 - Page Not Found";
   }, []);

@@ -51,7 +51,7 @@ const Sidebar = () => {
     {
       title: "Home",
       icon: <HomeIcon />,
-      path: "",
+      path: "/home",
     },
     {
       title: "Shop For Me",
@@ -108,14 +108,13 @@ const Sidebar = () => {
   useEffect(() => {
     let locationArray = location.pathname.split("/").slice(1);
     let sideNavs = navs.concat(otherNavs);
-    let nav = sideNavs.find(
-      (nav) => nav.path === "/" + locationArray[0]
-    );
+    let nav = sideNavs.find((nav) => nav.path === "/" + locationArray[0]);
     if (nav) {
-      document.title = `${nav?.title} - ${
-        locationArray[1].at(0).toUpperCase() +
-        locationArray[1].slice(1)
-      }`;
+      if (locationArray[1])
+        document.title = `${nav?.title} - ${
+          locationArray[1].charAt(0).toUpperCase() + locationArray[1].slice(1)
+        }`;
+      else document.title = nav?.title;
     }
   }, [location.pathname]);
 

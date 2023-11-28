@@ -1,16 +1,23 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Divider, Tabs, Badge, Breadcrumbs, Tab } from "@mui/material";
+import { Link, LinkProps, useLocation } from "react-router-dom";
+import {
+  Divider,
+  Tabs,
+  Badge,
+  Breadcrumbs,
+  Tab,
+  TabProps,
+} from "@mui/material";
 import NotificationIcon from "../assets/icons/notification.svg?react";
 import UserIcon from "../assets/icons/user.svg?react";
 import { FaCaretDown } from "react-icons/fa6";
 import HomeIcon from "../assets/icons/home.svg?react";
 import ArrowLeft from "../assets/icons/arrow-left.svg?react";
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   const location = useLocation();
 
-  const configureTitle = (path) => {
+  const configureTitle = (path: string) => {
     // check if it includes something
     if (path.includes("/shop-for-me")) {
       return "Shop For Me";
@@ -27,14 +34,12 @@ const Navigation = () => {
   const tabs = ["orders", "requests", "draft"];
   let locationArray = location.pathname.split("/").slice(2);
 
-  const [value, setValue] = React.useState(
+  const [value, setValue] = React.useState<number>(
     tabs.indexOf(locationArray[locationArray.length - 1])
   );
 
   useEffect(() => {
-    if (locationArray[0] === "requests" && value !== 1) {
-      setValue(1);
-    }
+    setValue(tabs.indexOf(locationArray[locationArray.length - 1]));
   }, [locationArray]);
 
   return (
@@ -55,12 +60,7 @@ const Navigation = () => {
               {/* {title !== "Home" &&
                 " - " + tabs[value]} */}
             </Link>
-            <div
-              to={`/${location.pathname.split("/")[1]}/${tabs[value]}`}
-              className="cursor-pointer"
-            >
-              {tabs[value]}
-            </div>
+            <div className="cursor-pointer">{tabs[value]}</div>
           </Breadcrumbs>
         </div>
         <div className="flex gap-3 items-center">
@@ -68,7 +68,6 @@ const Navigation = () => {
             badgeContent={" "}
             color="error"
             overlap="circular"
-            size="large"
             variant="dot"
           >
             <NotificationIcon className="cursor-pointer" />
@@ -82,10 +81,10 @@ const Navigation = () => {
       <Divider className="-mt-[0.6px] text-[#79747E] " />
       <Tabs
         value={value}
-        onChange={(e, value) => {
+        onChange={(_, value) => {
           setValue(value);
         }}
-        className="ml-10 -mt-1"
+        className="ml-5 -mt-1"
         TabIndicatorProps={{
           children: (
             <div className="h-[10px] -translate-y-[2px] rounded-t-[5px] w-[60%] bg-text-secondary" />
@@ -107,7 +106,7 @@ const Navigation = () => {
         <Tab label="Draft" /> */}
         {tabs.map((tab, index) => (
           <Tab
-            to={`${location.pathname.split("/")[1]}/${tab}`}
+            to={`/${location.pathname.split("/")[1]}/${tab}`}
             key={index}
             label={tab}
             LinkComponent={Link}

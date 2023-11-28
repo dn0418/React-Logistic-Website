@@ -11,9 +11,12 @@ export default {
         'background-secondary': '#F4EFF4',
         'background-variant': '#E6E1E514',
         'background-outline': '#CAC4D0',
+        'background-important': '#F2B8B5',
+        'background-form': '#E8DEF8',
         'text-primary': '#E7E0EC',
         'text-outline': '#1D192B',
-        'text-secondary': '#6750A4'
+        'text-secondary': '#6750A4',
+        'text-important': '#21005D',
       }
     },
   },

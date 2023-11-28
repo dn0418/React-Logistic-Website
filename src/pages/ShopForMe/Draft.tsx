@@ -1,8 +1,7 @@
 import React from "react";
-import ShopIcon from "../../assets/icons/shop-2.svg?react";
 import NoOrder from "./NoOrder";
 
-const Draft = () => {
+const Draft: React.FC = () => {
   return (
     <NoOrder
       desc={

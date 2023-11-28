@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Orders from "./Orders";
 import Requests from "./Requests";
 import Draft from "./Draft";
 import NotFound from "../NotFound";
 
-const ShopForMe = () => {
+const ShopForMe: React.FC = () => {
 
   return (
     <Routes>
