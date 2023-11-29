@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { orderRequest } from "../types/orderRequest";
 
 export const userState = atom({
   key: "userState",
@@ -11,4 +12,32 @@ export const userState = atom({
 export const notFoundState = atom({
   key: "notFoundState",
   default: false,
+});
+
+export const ordersRequestState = atom<orderRequest[]>({
+  key: "ordersRequestState",
+  default: [
+    {
+      id: "OD78667",
+      status: "Responded",
+      date: "23rd July 2021",
+      images: [
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+      ],
+    },
+    {
+      id: "OD78667",
+      status: "Processed",
+      date: "23rd Jan 2023",
+      images: [
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+        "https://static.frame.work/3vwhvbza41miqua8ncddi50s6jeq",
+      ],
+    },
+  ],
 });
