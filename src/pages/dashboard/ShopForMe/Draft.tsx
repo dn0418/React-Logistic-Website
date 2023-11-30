@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NoOrder from "./NoOrder";
 
 const Draft: React.FC = () => {
+  useEffect(() => {
+    document.title = "Shop For Me | Draft"
+  }, [])
   return (
     <NoOrder
       desc={

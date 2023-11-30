@@ -1,5 +1,5 @@
 import React from "react";
-import ShopIcon from "../../assets/icons/shop-2.svg?react";
+import ShopIcon from "../../../assets/icons/shop-2.svg?react";
 import { Link } from "react-router-dom";
 
 const NoOrder: React.FC<{
@@ -12,7 +12,7 @@ const NoOrder: React.FC<{
         {desc}
       </div>
       <Link
-        to="/shop-for-me/requests?request=order"
+        to="/dashboard/shop-for-me/requests?request=order"
         className="bg-text-secondary text-white rounded-full px-3 py-2 gap-2 tracking-[0.1px] text-[14px] font-medium flex items-center"
       >
         <ShopIcon />

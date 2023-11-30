@@ -1,6 +1,8 @@
+export type Status = "Responded" | "Processed" | "Not Responded to";
 export interface orderRequest {
-  id: string;
-  status: "Responded" | "Processed" | "Not Responded to";
+  orderId: string;
+  requestId: string;
+  status: Status;
   date: string;
   images: string[];
 }

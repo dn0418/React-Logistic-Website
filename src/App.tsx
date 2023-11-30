@@ -1,12 +1,14 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import ShopForMe from "./pages/ShopForMe";
+import ShopForMe from "./pages/dashboard/ShopForMe";
 import { Toaster } from "react-hot-toast";
 import { RecoilRoot } from "recoil";
-import NotFound from "./pages/NotFound";
-import Layout from "./components/Layout";
+import NotFound from "./pages/dashboard/NotFound";
+import Layout from "./components/dashboard/Layout";
 import React from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import Dashboard from "./pages/dashboard";
+import Auth from "./pages/auth";
 
 const App: React.FC = () => {
   return (
@@ -14,12 +16,11 @@ const App: React.FC = () => {
       <RecoilRoot>
         <Toaster />
         <Router>
-          <Layout>
             <Routes>
-              <Route path="/shop-for-me/*" element={<ShopForMe />} />
+              <Route path="/dashboard/*" element={<Dashboard />} />
+              <Route path="/auth/*" element={<Auth />}/>
               <Route path="/*" element={<NotFound />} />
             </Routes>
-          </Layout>
         </Router>
       </RecoilRoot>
     </LocalizationProvider>

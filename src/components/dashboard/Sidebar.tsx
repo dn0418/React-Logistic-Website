@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { SwipeableDrawer, Divider } from "@mui/material";
 import { useRecoilValue } from "recoil";
-import { userState } from "../utils/atom";
+import { userState } from "../../utils/atom";
 import { NameInitialsAvatar } from "react-name-initials-avatar";
-import HomeIcon from "../assets/icons/home.svg?react";
-import ShopIcon from "../assets/icons/shop.svg?react";
-import ExportIcon from "../assets/icons/export.svg?react";
-import ImportIcon from "../assets/icons/import.svg?react";
-import CarIcon from "../assets/icons/car.svg?react";
-import RoutingIcon from "../assets/icons/routing-2.svg?react";
-import WalletIcon from "../assets/icons/wallet-3.svg?react";
-import CalculatorIcon from "../assets/icons/calculator.svg?react";
-import CeloIcon from "../assets/icons/celo.svg?react";
-import SettingsIcon from "../assets/icons/setting-3.svg?react";
+import HomeIcon from "../../assets/icons/home.svg?react";
+import ShopIcon from "../../assets/icons/shop.svg?react";
+import ExportIcon from "../../assets/icons/export.svg?react";
+import ImportIcon from "../../assets/icons/import.svg?react";
+import CarIcon from "../../assets/icons/car.svg?react";
+import RoutingIcon from "../../assets/icons/routing-2.svg?react";
+import WalletIcon from "../../assets/icons/wallet-3.svg?react";
+import CalculatorIcon from "../../assets/icons/calculator.svg?react";
+import CeloIcon from "../../assets/icons/celo.svg?react";
+import SettingsIcon from "../../assets/icons/setting-3.svg?react";
 import { Link, useLocation } from "react-router-dom";
 
 const NameDisplay = () => {
@@ -121,12 +121,12 @@ const Sidebar = () => {
   return (
     <div className="flex overflow-scroll sticky bottom-0 left-0 top-0 bg-background-primary pt-9  h-screen w-[266px] flex-col justify-between">
       <NameDisplay />
-      <div className="flex flex-col mt-10 gap-1">
+      <div className="flex flex-col mt-[36px] gap-1">
         {navs.map((nav, index) => (
           <Link
-            to={nav.path + "/orders"}
+            to={"/dashboard" + nav.path + "/orders"}
             key={index}
-            className={`flex py-[13px] transition-all duration-1000 cursor-pointer hover:bg-[url('/wow.svg')] ${
+            className={`flex py-[14px] transition-all duration-1000 cursor-pointer hover:bg-[url('/wow.svg')] ${
               location.pathname.split("/")[1] === nav.path.slice(1)
                 ? "bg-[url('/wow.svg')]"
                 : ""
@@ -143,9 +143,9 @@ const Sidebar = () => {
         <Divider className="text-background-outline bg-background-outline mx-6" />
         {otherNavs.map((nav, index) => (
           <Link
-            to={nav.path}
+            to={"/dashboard" + nav.path + "/orders"}
             key={index}
-            className={`flex py-[13px] transition-all duration-1000 cursor-pointer hover:bg-[url('/wow.svg')] ${
+            className={`flex py-[14px] transition-all duration-1000 cursor-pointer hover:bg-[url('/wow.svg')] ${
               location.pathname.split("/")[1] === nav.path.slice(1)
                 ? "bg-[url('/wow.svg')]"
                 : ""

@@ -2,6 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      xs: "360px",
+      sm: "599px",
+      md: "904px",
+      mdd: "1054px",
+      lg: "1239px",
+      xl: "1439px",
+      "2xl": "1440px",
+    },
     extend: {
       colors: {
         "background-primary": "#060C2C",
@@ -15,7 +24,9 @@ export default {
         "text-outline": "#1D192B",
         "text-secondary": "#6750A4",
         "text-important": "#21005D",
+        "text-important-2": "#49454F",
         "text-variant": "#1C1B1F",
+        "text-variant-2": "#625B71",
         "border-primary": "#B3261E",
         "border-secondary": "#79747E",
       },
