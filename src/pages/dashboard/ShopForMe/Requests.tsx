@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NoOrder from "./NoOrder";
 import { useLocation, useNavigate } from "react-router-dom";
 import RequestOrderForm from "../../../forms/RequestOrder";
 import { useRecoilValue } from "recoil";
 import { ordersRequestState } from "../../../utils/atom";
 import OrderRequest from "../../../views/dashboard/OrderRequest";
-import { Badge, Modal } from "@mui/material";
+import { Modal } from "@mui/material";
 import SearchRequestOrder from "../../../searching/RequestOrder";
 import { orderRequest } from "../../../types/orderRequest";
 import UniqueOrderRequest from "../../../views/dashboard/UniqueOrderRequest";
-import { motion } from "framer-motion";
-import { cn } from "../../../utils/cn";
 import PlaceOrder from "../../../components/dashboard/PlaceOrder";
+import PropTypes from "prop-types";
+import SwipeableViews from "react-swipeable-views";
 
 const Requests: React.FC = () => {
   const [show, setShow] = React.useState<boolean>();
@@ -41,9 +41,11 @@ const Requests: React.FC = () => {
     "view"
   );
 
+  const [height, setHeight] = useState<number | null>(null);
+
   return (
     show !== undefined && (
-      <div className="sm:px-6 px-2">
+      <div className="mdd:px-6 xs:px-4 px-2">
         {show ? (
           <RequestOrderForm />
         ) : requests.length > 0 ? (
@@ -56,24 +58,29 @@ const Requests: React.FC = () => {
             <Modal
               open={currentRequest !== null}
               onClose={() => {
-                setCurrentShow("view")
-                setCurrentRequest(null)
+                setCurrentShow("view");
+                setCurrentRequest(null);
               }}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
               className="overflow-x-hidden"
             >
-              <>
-                {currentShow === "view" && (
-                <motion.div
-                    className="bg-white overflow-scroll gap-7 rounded-[20px] p-5 sm:p-8 w-[80%] mx-auto flex flex-col my-6 "
-
-                  animate={{
-                    translateX: `-${currentShow === "view" ? 0 : 140}%`,
+              <div
+                className="w-[90%] duration-1000 transition-all mx-auto"
+                style={{
+                  height: height ? height : "auto",
+                  overflowY: height ? "hidden" : "unset",
+                }}
+              >
+                <SwipeableViews
+                  index={
+                    currentShow === "view" ? 0 : currentShow === "place" ? 1 : 0
+                  }
+                  onChangeIndex={(index) => {
+                    setCurrentShow(index === 0 ? "view" : "place");
                   }}
-                  transition={{
-                    ease: "easeInOut",
-                  }}
+                  animateHeight
+                  className="my-6 border-0 ring-0 outline-none"
                 >
                   <UniqueOrderRequest
                     onProceed={() => {
@@ -84,28 +91,17 @@ const Requests: React.FC = () => {
                     }}
                     request={currentRequest!}
                   />
-                </motion.div>
-                )}
-                  <motion.div
-                    className="bg-white overflow-scroll gap-7 rounded-[20px] p-5 sm:p-8 w-[80%] absolute top-0 left-0 right-0 mx-auto flex flex-col my-6 "
-                    animate={{
-                      translateX: `${currentShow === "view" ? 150 : 0}%`,
+
+                  <PlaceOrder
+                    onBack={() => {
+                      setCurrentShow("view");
                     }}
-                    style={{
-                      translateX: `${currentShow === "view" ? 150 : 0}%`,
-                       
+                    onChangeHeight={(height) => {
+                      setHeight(height);
                     }}
-                    transition={{
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <PlaceOrder
-                      onBack={() => {
-                        setCurrentShow("view");
-                      }}
-                    />
-                  </motion.div>
-              </>
+                  />
+                </SwipeableViews>
+              </div>
             </Modal>
             <div className="flex flex-col gap-5 mx-auto xs:mx-0 w-fit">
               {requests.map((request, index) => (

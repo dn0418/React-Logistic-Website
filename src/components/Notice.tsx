@@ -12,10 +12,10 @@ const Notice = ({
   return (
     <div
       className={`bg-background-important  ${
-        list ? "p-5 rounded-xl" : "py-3 px-4 rounded-3xl"
+        list ? "p-5 rounded-xl" : "py-4 px-5 rounded-3xl"
       }`}
     >
-      <div className="text-text-important font-medium text-[14px] tracking-[0.1px] leading-[20px]">
+      <div className="text-text-important mb-2 font-medium text-[16px] tracking-[0.1px] leading-[20px]">
         {title}
       </div>
       {list ? (

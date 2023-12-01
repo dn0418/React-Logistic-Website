@@ -14,14 +14,16 @@ import { BsArrowLeftCircleFill } from "react-icons/bs";
 const UniqueOrderRequest = ({
   request,
   onProceed,
+  onBack,
 }: {
   request: orderRequest;
   onProceed: () => void;
+  onBack: () => void;
 }) => {
   return (
-    <>
+    <div className="bg-white sm:gap-7 gap-4 rounded-[20px] p-[1.6rem] sm:p-8 mx-auto flex flex-col  ">
       <Title title="Shop For Me Order Request Details" />
-      <div className="text-text-variant text-[24px] leading-[32px]">
+      <div className="text-text-variant mdd:text-[24px] text-[19px] leading-[32px]">
         Request ID:&nbsp;
         <b className="leading-[36px]">{request.requestId}</b>
       </div>
@@ -138,7 +140,7 @@ const UniqueOrderRequest = ({
             question="Quantity"
             answer="4"
           />
-          <div className="mdd:flex grid grid-cols-2 gap-3 sm:gap-[80px]">
+          <div className="md:flex grid grid-cols-2 gap-3 sm:gap-[80px]">
             <SubQuestionAnswer
               className="sm:flex hidden flex-col gap-4"
               question="Quantity"
@@ -297,7 +299,7 @@ const UniqueOrderRequest = ({
               "The <b>shop for me cost</b> could have been changed/updated by our staffs if they observe differences between the details you provided and the ones we verify from the store, however we will inform you about it."
             }
           />
-          <div className="flex sm:items-center gap-2 sm:flex-row flex-col sm:gap-[120px]">
+          <div className="flex sm:items-center gap-2 sm:flex-row flex-col sm:gap-[132px]">
             <SubQuestionAnswer
               className="flex flex-col gap-1 sm:gap-3"
               question={
@@ -348,13 +350,16 @@ const UniqueOrderRequest = ({
           </div>
         </div>
         <div className="flex sm:flex-row flex-col sm:items-center gap-4">
-          <button className="border-[0.88px] justify-center text-text-secondary flex border-border-secondary items-center gap-2 rounded-full py-[10px] px-10">
+          <button
+            onClick={onBack}
+            className="border-[0.88px] justify-center text-text-secondary flex border-border-secondary items-center gap-2 rounded-full py-[8px] sm:py-[10px] px-10"
+          >
             <BsArrowLeftCircleFill size={20} />
             Back
           </button>
           <button
             onClick={onProceed}
-            className="rounded-[100px] text-white flex items-center gap-3 justify-center px-3 sm:px-10 py-3 font-medium bg-[#B3261E]"
+            className="rounded-[100px] text-white flex items-center gap-3 justify-center px-3 sm:px-10 py-[9px] sm:py-3 font-medium bg-[#B3261E]"
           >
             <WalletIcon color="#fff" />
             <div className="flex whitespace-nowrap items-center gap-2">
@@ -363,7 +368,7 @@ const UniqueOrderRequest = ({
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

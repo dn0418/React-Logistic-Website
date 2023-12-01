@@ -119,7 +119,7 @@ const Sidebar = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex overflow-scroll sticky bottom-0 left-0 top-0 bg-background-primary pt-9  h-screen w-[266px] flex-col justify-between">
+    <div className="flex overflow-scroll z-50 sticky bottom-0 left-0 top-0 bg-background-primary pt-9  h-screen w-[266px] flex-col justify-between">
       <NameDisplay />
       <div className="flex flex-col mt-[36px] gap-1">
         {navs.map((nav, index) => (

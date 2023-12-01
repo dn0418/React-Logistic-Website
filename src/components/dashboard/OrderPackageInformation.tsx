@@ -19,8 +19,8 @@ const OrderPackageInformation = ({
   onBack: () => void;
 }) => {
   return (
-    <>
-      <div className="text-text-variant text-[24px] leading-[32px]">
+    <div className="w-full overflow-scroll mx-auto flex flex-col gap-3 sm:gap-5">
+      <div className="text-text-variant mdd:text-[22px] text-[19px] leading-[32px]">
         Request ID:&nbsp;
         <b className="leading-[36px]">R78667</b>
       </div>
@@ -259,14 +259,14 @@ const OrderPackageInformation = ({
               onBack();
             }
           }}
-          className="border-[0.88px] justify-center text-text-secondary flex border-border-secondary items-center gap-2 rounded-full py-[10px] px-10"
+          className="border-[0.88px] justify-center text-text-secondary flex border-border-secondary items-center gap-2 rounded-full py-[8px] sm:py-[10px] px-10"
         >
           <BsArrowLeftCircleFill size={20} />
           Back
         </button>
         <button
           onClick={handleNext}
-          className="rounded-[100px] text-white flex items-center gap-3 justify-center px-3 sm:px-20 py-2 font-medium bg-text-secondary"
+          className="rounded-[100px] text-white flex items-center gap-3 justify-center px-3 sm:px-20 py-[8px] sm:py-2 font-medium bg-text-secondary"
         >
           <FaCircleCheck />
           <div className="flex whitespace-nowrap items-center gap-2">
@@ -274,7 +274,7 @@ const OrderPackageInformation = ({
           </div>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

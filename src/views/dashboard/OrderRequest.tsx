@@ -15,11 +15,11 @@ const OrderRequest = ({
   return (
     <div
       onClick={onClick}
-      className="flex rounded-[19.93px] sm:pl-6 px-5 sm:pr-12 py-9 bg-white flex-col"
+      className="flex rounded-[19.93px] sm:pl-6 px-5 sm:pr-12 sm:py-9 py-6 bg-white flex-col"
     >
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <div className="text-text-variant text-[24px] leading-[32px]">
+          <div className="text-text-variant mdd:text-[24px] text-[19px] leading-[32px]">
             Order ID:&nbsp;
             <b className="leading-[36px]">{request.orderId}</b>
           </div>

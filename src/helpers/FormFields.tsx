@@ -10,6 +10,8 @@ import {
   InputLabel,
   SelectChangeEvent,
   FormHelperText,
+  RadioProps,
+  Radio,
 } from "@mui/material";
 import { CiSquareMinus } from "react-icons/ci";
 import { CiSquarePlus } from "react-icons/ci";
@@ -19,6 +21,7 @@ import DollarIcon from "../assets/icons/dollar-square.svg?react";
 import { DatePicker, DatePickerProps } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import { phoneCodes } from "../utils/countriescodes";
 
 export type SelectOption = {
   value: unknown;
@@ -38,14 +41,14 @@ export const SelectInput = ({
   return (
     <div className="flex items-center gap-2 w-full">
       <TextField
-        select
         labelId="demo-simple-select-label"
         id="demo-simple-select-label"
-        onChange={(e: any) => {
-          const value = e.target.value as string;
-          setValue(value);
+        onChange={(e) => {
+          setValue(e.target.value);
+          if (props.onChange) props.onChange(e.target.value);
         }}
-        value={value || props.defaultValue}
+        value={value}
+        select
         {...props}
         sx={{
           // style border color once focused
@@ -275,5 +278,81 @@ export const FileInputField = (props: {
         </div>
       </div>
     </div>
+  );
+};
+
+export const RadioInputField = (props: RadioProps) => {
+  const [value, setValue] = useState("");
+  return (
+    <Radio
+      {...props}
+      value={value}
+      onChange={(e) => {
+        setValue(e.target.value as any);
+      }}
+      sx={{
+        "&.Mui-checked": {
+          color: "#6750A4",
+        },
+      }}
+    />
+  );
+};
+
+export const PhoneInput = (props: TextFieldProps) => {
+  return (
+    <TextField
+      {...props}
+      InputLabelProps={{
+        sx: {
+          color: "#1C1B1F",
+          [`&.${inputLabelClasses.focused}`]: {
+            color: "#6750A4",
+          },
+        },
+      }}
+      sx={{
+        ".MuiOutlinedInput-root.Mui-focused:not(.MuiSelect-select) .MuiOutlinedInput-notchedOutline":
+          {
+            borderColor: "#6750A4",
+          },
+        "& .MuiInputBase-input:not(.MuiSelect-select)": {
+          paddingLeft: 3    
+        },
+      }}
+      InputProps={{
+        className: "rounded-[20px] px-1",
+        startAdornment: (
+          <TextField
+            select
+            className="w-[300px]"
+            defaultValue={"234"}
+            sx={{
+              // remove border on fieldset
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderTop: "none",
+                borderLeft: "none",
+                borderBottom: "none",
+                borderRight: "1px solid #79747E",
+              },
+              // remove styling for focused state
+              ".MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                {
+                  borderTop: "none",
+                  borderLeft: "none",
+                  borderBottom: "none",
+                  borderRight: "1px solid #79747E",
+                },
+            }}
+          >
+            {phoneCodes.map((code) => (
+              <MenuItem key={code.code} value={code.code}>
+                {code.country} +&nbsp;{code.code}
+              </MenuItem>
+            ))}
+          </TextField>
+        ),
+      }}
+    />
   );
 };
