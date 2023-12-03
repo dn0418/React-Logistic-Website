@@ -1,4 +1,4 @@
-import { orderRequest } from "../../types/orderRequest";
+import { OrderRequest } from "../../types/orderRequest";
 import Title from "../../components/Title";
 import Question from "../../components/Question";
 import SubQuestion from "../../components/SubQuestion";
@@ -10,13 +10,14 @@ import ItemCosts from "../../components/ItemCosts";
 import ConvertIcon from "../../assets/icons/convert-card.svg?react";
 import WalletIcon from "../../assets/icons/wallet.svg?react";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
+import dayjs from "dayjs";
 
 const UniqueOrderRequest = ({
   request,
   onProceed,
   onBack,
 }: {
-  request: orderRequest;
+  request: OrderRequest;
   onProceed: () => void;
   onBack: () => void;
 }) => {
@@ -44,7 +45,7 @@ const UniqueOrderRequest = ({
               }}
               question="Request Date"
               className="flex flex-col gap-1 sm:gap-3 mdd:gap-7"
-              answer={request.date}
+              answer={dayjs(request.date).format("DD/MM/YYYY")}
             />
             <SubQuestionAnswer
               className="flex flex-col gap-2 sm:gap-3 mdd:gap-5"

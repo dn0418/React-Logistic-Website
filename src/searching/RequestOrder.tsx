@@ -1,11 +1,10 @@
-import { TextField } from "@mui/material";
 import FilterIcon from "../assets/icons/ff-token.svg?react";
 import { SearchInputField } from "../helpers/FormFields";
 import { BsArrowDownLeftSquareFill } from "react-icons/bs";
 
 const SearchRequestOrder = ({ onAdd }: { onAdd: () => void }) => {
   return (
-    <div className="flex mt-5 mb-10 w-full items-center justify-center xs:justify-between">
+    <div className="flex mb-6 w-full items-center justify-center xs:justify-between">
       <div className="flex gap-4 mr-4 items-center">
         <div className="relative">
           <div className="absolute border-white border-2 p-[5px] sm:p-[6px] bg-border-primary rounded-full -right-1 -top-1"></div>

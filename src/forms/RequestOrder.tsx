@@ -18,7 +18,7 @@ import { BsArrowRightCircleFill } from "react-icons/bs";
 
 const RequestOrderForm = () => {
   return (
-    <form className="flex flex-col my-5 gap-4 mdd:mr-[6rem]">
+    <form className="flex flex-col gap-4 mdd:mr-[6rem]">
       <div className="bg-white flex flex-col gap-6 rounded-[20px] p-5 sm:p-6">
         <Title title={"Requesting For New Shop For Me Service"} />
         <Notice
@@ -176,7 +176,7 @@ const RequestOrderForm = () => {
               <DeleteIcon className="cursor-pointer sm:block hidden" />
             </div>
           </div>
-          <AddButton className="px-[40px]" title="Add Item" />
+          <AddButton className="px-[37px]" title="Add Item" />
         </div>
         <div className="flex items-center gap-3 mt-3 mb-2">
           <button className="border-[0.88px] sm:w-fit w-[50%] justify-center text-text-secondary  sm:ml-3 flex border-border-secondary items-center gap-2 rounded-full py-[10px] px-5">

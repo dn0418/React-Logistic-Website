@@ -1,5 +1,5 @@
 import { MdOutlineShield } from "react-icons/md";
-import { orderRequest } from "../../types/orderRequest";
+import { OrderRequest } from "../../types/orderRequest";
 import { IoEllipsisHorizontalOutline } from "react-icons/io5";
 import dayjs from "dayjs";
 import DisplayStatus from "../../components/DisplayStatus";
@@ -9,7 +9,7 @@ const OrderRequest = ({
   request,
   onClick,
 }: {
-  request: orderRequest;
+  request: OrderRequest;
   onClick: () => void;
 }) => {
   return (
@@ -35,29 +35,29 @@ const OrderRequest = ({
         <ShieldButton title="Take Action Now" />
       </div>
       <div className="sm:flex hidden my-5 items-center w-fit rounded-[20px] bg-background-variant-2 p-4 gap-4">
-        {request.images.slice(0, 4).map((image, index) => (
+        {/* {request.image.slice(0, 4).map((image, index) => (
           <img
             src={image}
             alt="item"
             className="w-[120px] h-[100px] object-cover rounded-[10px]"
             key={index}
           />
-        ))}
-        {request.images.length > 4 && (
+        ))} */}
+        {request.image.length > 4 && (
           <div className="flex items-center justify-center text-text-variant-2  tracking-[0.1px] leading-[20px] font-[500] text-[14px] h-[100px]">
-            {request.images.length - 4}+ more
+            {request.image.length - 4}+ more
           </div>
         )}
       </div>
       <div className="flex sm:hidden my-5 items-center w-fit rounded-[20px] bg-background-variant-2 p-4 gap-4">
         <img
-          src={request.images[0]}
+          src={request.image[0]}
           alt="item"
           className="w-[120px] h-[100px] object-cover rounded-[10px]"
         />
-        {request.images.length > 1 && (
+        {request.image.length > 1 && (
           <div className="flex items-center justify-center text-text-variant-2  tracking-[0.1px] leading-[20px] font-[500] text-[14px] h-[100px]">
-            {request.images.length - 1}+ more
+            {request.image.length - 1}+ more
           </div>
         )}
       </div>
@@ -66,7 +66,7 @@ const OrderRequest = ({
           Order Request Date:
         </div>
         <div className="text-[#625B71] font-[500] text-[14px] tracking-[0.1px] leading-[20px]">
-          {request.date}
+          {dayjs(request.date).format("DD MMM YYYY")}
         </div>
       </div>
     </div>

@@ -6,20 +6,20 @@ import ItemCosts from "../ItemCosts";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { FaCircleCheck } from "react-icons/fa6";
 import ConvertIcon from "../../assets/icons/convert-card.svg?react";
+import { useNavigate } from "react-router-dom";
 
 const OrderPackageInformation = ({
   handleNext,
   handleBack,
-  onBack,
   activeStep,
 }: {
   activeStep: number;
   handleNext: () => void;
   handleBack: () => void;
-  onBack: () => void;
 }) => {
+  const navigate = useNavigate();
   return (
-    <div className="w-full overflow-scroll mx-auto flex flex-col gap-3 sm:gap-5">
+    <div className="flex flex-col gap-3 sm:gap-5">
       <div className="text-text-variant mdd:text-[22px] text-[19px] leading-[32px]">
         Request ID:&nbsp;
         <b className="leading-[36px]">R78667</b>
@@ -97,11 +97,11 @@ const OrderPackageInformation = ({
           />
         </div>
         <SubQuestionAnswer
-          className="flex flex-col gap-4"
+          className="sm:hidden flex flex-col gap-4"
           question="Quantity"
           answer="4"
         />
-        <div className="mdd:flex grid grid-cols-2 gap-3 mdd:gap-[80px] sm:gap-[30px]">
+        <div className="lg:flex my-2 grid grid-cols-2 gap-3 lg:gap-[80px] sm:gap-[30px]">
           <SubQuestionAnswer
             className="sm:flex hidden flex-col gap-4"
             question="Quantity"
@@ -145,6 +145,7 @@ const OrderPackageInformation = ({
         />
         <SubQuestionAnswer
           question="Product Description"
+          className="flex flex-col gap-4"
           answer="This is a product description"
         />
         <div className="flex sm:flex-row flex-col gap-2 sm:gap-28">
@@ -256,7 +257,7 @@ const OrderPackageInformation = ({
             if (activeStep > 0) {
               handleBack();
             } else {
-              onBack();
+              navigate("/dashboard/shop-for-me/requests");
             }
           }}
           className="border-[0.88px] justify-center text-text-secondary flex border-border-secondary items-center gap-2 rounded-full py-[8px] sm:py-[10px] px-10"

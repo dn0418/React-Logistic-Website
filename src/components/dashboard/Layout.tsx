@@ -22,7 +22,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <Navigation openDrawer={() => {
           setOpen(true);
         }} />
-        <div>{children}</div>
+        <div className="p-6">{children}</div>
       </div>
     </div>
   );

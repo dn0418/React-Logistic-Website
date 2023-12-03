@@ -10,7 +10,7 @@ const AddButton = ({
   return (
     <button
       className={
-        "bg-[rgb(73,69,79)] text-white rounded-[20px] flex items-center gap-3 px-5 sm:w-fit w-full justify-center py-4 " +
+        "bg-[rgb(73,69,79)] text-white rounded-[20px] flex items-center gap-3 px-7 sm:w-fit w-full justify-center py-[13px] " +
         className
       }
     >

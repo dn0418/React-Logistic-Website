@@ -6,20 +6,10 @@
   width: 100%;
 }
 
-.MuiModal-root {
-  overflow: scroll;
-}
 
 div.react-swipeable-view-container > div[data-swipeable="true"] {
-  overflow: auto !important;
+  overflow: hidden !important;
   border: 0;
   outline: 0;
+  height: fit-content !important;
 }
-
-
-/* .MuiStepConnector-root, .MuiStepConnector-line {
-  width: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  flex: 0 !important;
-} */

@@ -4,15 +4,14 @@ import {
   StepIconProps,
   StepLabel,
   Stepper,
-  styled,
 } from "@mui/material";
-import Title from "../Title";
-import React, { useEffect } from "react";
-import OrderPackageInformation from "./OrderPackageInformation";
-import OrderBillingAddress from "./OrderBillingAddress";
-import OrderPlaceOrder from "./OrderPlaceOrder";
+import Title from "../../../components/Title";
+import React from "react";
+import OrderPackageInformation from "../../../components/dashboard/OrderPackageInformation";
+import OrderBillingAddress from "../../../components/dashboard/OrderBillingAddress";
+import OrderPlaceOrder from "../../../components/dashboard/OrderPlaceOrder";
 import SwipeableViews from "react-swipeable-views";
-import SuccessConfirmOrder from "./SuccessConfirmOrder";
+import SuccessConfirmOrder from "../../../components/dashboard/SuccessConfirmOrder";
 import { HiCheckCircle } from "react-icons/hi2";
 
 const steps = [
@@ -46,13 +45,7 @@ function ColorlibStepIcon(props: StepIconProps) {
   );
 }
 
-const PlaceOrder = ({
-  onBack,
-  onChangeHeight,
-}: {
-  onBack: () => void;
-  onChangeHeight: (height: number | null) => void;
-}) => {
+const PlaceOrder: React.FC = () => {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -63,20 +56,8 @@ const PlaceOrder = ({
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  useEffect(() => {
-    if (activeStep === 1) {
-      onChangeHeight(1000);
-    } else if (activeStep === 2) {
-      onChangeHeight(2100);
-    } else if (activeStep === 3) {
-      onChangeHeight(1180);
-    } else {
-      onChangeHeight(null);
-    }
-  }, [activeStep]);
-
   return (
-    <div className="bg-white gap-7 rounded-[20px] p-[1.6rem] sm:p-8 mx-auto flex flex-col">
+    <div className="bg-white gap-7 rounded-[20px] p-[1.6rem] sm:p-8 flex flex-col max-w-[calc(100vw-3rem)] md:max-w-[calc(100vw-20rem)]">
       <Title title="Confirm and Place your Order" />
       <Stepper
         connector={null}
@@ -105,11 +86,6 @@ const PlaceOrder = ({
                     index === activeStep
                       ? {}
                       : {
-                          // width: "0px",
-                          // overflow: "hidden",
-                          // transitionDuration: "0.5s",
-                          // transitionProperty: "width",
-                          // transitionTimingFunction: "ease-in-out",
                           display: "none",
                         },
                 }}
@@ -122,19 +98,17 @@ const PlaceOrder = ({
         ))}
       </Stepper>
       <SwipeableViews
-        resistance
-        animateHeight
         index={activeStep}
+        animateHeight
         onChangeIndex={(index) => {
           setActiveStep(index);
         }}
-        className="my-6 border-0 ring-0 h-fit outline-none"
+        className="border-0 ring-0 overflow-hidden h-fit outline-none"
       >
         <OrderPackageInformation
           handleBack={handleBack}
           handleNext={handleNext}
           activeStep={activeStep}
-          onBack={onBack}
         />
 
         <OrderBillingAddress handleBack={handleBack} handleNext={handleNext} />
@@ -142,7 +116,6 @@ const PlaceOrder = ({
         <SuccessConfirmOrder
           handleClose={() => {
             setActiveStep(0);
-            onBack();
           }}
         />
       </SwipeableViews>

@@ -8,7 +8,7 @@ import ReceiptIcon from "../../assets/icons/receipt-2.svg?react";
 
 const SuccessConfirmOrder = ({ handleClose }: { handleClose: () => void }) => {
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col h-fit gap-7">
       <div className="py-[15px] items-center gap-3 flex justify-center px-[15px] sm:px-[20px] border rounded-[20px] border-background-outline">
         <div className="text-text-variant mdd:text-[22px] text-[19px] w-fit leading-[32px]">
           Order ID:&nbsp;

@@ -40,7 +40,15 @@ const Navigation: React.FC<{ openDrawer: () => void }> = ({ openDrawer }) => {
   );
 
   useEffect(() => {
-    setValue(tabs.indexOf(locationArray[locationArray.length - 1]));
+    if (locationArray.length > 2) {
+      setValue(
+        tabs.indexOf(
+          locationArray[locationArray.length - (locationArray.length - 1)]
+        )
+      );
+    } else {
+      setValue(tabs.indexOf(locationArray[locationArray.length - 1]));
+    }
   }, [locationArray]);
 
   return (
@@ -73,7 +81,6 @@ const Navigation: React.FC<{ openDrawer: () => void }> = ({ openDrawer }) => {
             </div>
           </div>
           <Breadcrumbs
-          
             separator={title === "Home" ? null : <ArrowLeft className="mx-1" />}
           >
             <Link to="/dashboard">
